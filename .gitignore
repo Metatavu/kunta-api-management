@@ -1,0 +1,6 @@
+/.project
+/wp/
+/node_modules/
+/vendor/
+/composer.lock
+/grunt-config.json

@@ -1,0 +1,48 @@
+{
+  "mysql": {
+    "user": "USER",
+    "password": "PASS",
+    "host": "localhost"
+  },
+  "management": {
+    "path": "wp",
+    "database": {
+      "name": "DB",
+      "user": "USER",
+      "password": "PASS"
+    },
+    "site": {
+      "url": "localhost:PORT",
+      "title": "Kunta API Management",
+      "adminUser": "USER",
+      "adminPassword": "PASSWORD",
+      "adminEmail": "email@example.com"
+    },
+    "plugins": {
+      "qtranslate-x": {
+        
+      },
+      "rest-api": {
+        
+      },
+      "WPAPI-SwaggerGenerator-master": {
+        "url": "https://github.com/starfishmod/WPAPI-SwaggerGenerator/archive/master.zip"        
+      },
+      "kunta-api-core": {
+        "file": "/Where/it/might/be/wordpress-kunta-api-core"
+      },
+      "kunta-api-services": {
+        "file": "/Where/it/might/be/wordpress-kunta-api-services"
+      },
+      "kunta-api-banners": {
+        "file": "/Where/it/might/be/wordpress-kunta-api-banners"
+      },
+      "kunta-api-menus": {
+        "file": "/Where/it/might/be/wordpress-kunta-api-menus"
+      },
+      "kunta-api-tiles": {
+        "file": "/Where/it/might/be/wordpress-kunta-api-tiles"
+      }
+    }
+  }
+}
