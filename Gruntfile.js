@@ -39,6 +39,7 @@ module.exports = function(grunt) {
           data: {
             "DATABASE": config.management.database.name,
             "USER": config.management.database.user,
+            "CREATEUSER": config.management.database.createUser,
             "PASSWORD": config.management.database.password,
             "HOST": config.management.database.host||"localhost"
           },
@@ -135,6 +136,10 @@ module.exports = function(grunt) {
       }
     },
     "shell": {
+      "update-directory-structure": {
+        "command": util.format('wp option update permalink_structure "/%postname%/" --path="%s"', config.management.path)
+      },
+      
       "management-languages-writable": {
         "command": "chmod a+w languages",
         "options": {
@@ -181,7 +186,7 @@ module.exports = function(grunt) {
     }
   });
   
-  grunt.registerTask("install-management", ["mustache_render:database-init", "mysqlrunfile:database-init", "wp-cli:download", "wp-cli:config", "wp-cli:install", "shell:management-languages-writable", "symlink:management-plugins", "wp-cli:install-plugins", "wp-cli:activate-plugins", "bgShell:start-management-server-background", "wait:2s", "shell:visit-management-admin", "bgShell:kill-management-server-background", "wp-cli:update-languages"]);
+  grunt.registerTask("install-management", ["mustache_render:database-init", "mysqlrunfile:database-init", "wp-cli:download", "wp-cli:config", "wp-cli:install", "shell:update-directory-structure", "shell:management-languages-writable", "symlink:management-plugins", "wp-cli:install-plugins", "wp-cli:activate-plugins", "bgShell:start-management-server-background", "wait:2s", "shell:visit-management-admin", "bgShell:kill-management-server-background", "wp-cli:update-languages"]);
   grunt.registerTask("uninstall-management", ["mustache_render:database-drop", "mysqlrunfile:database-drop", "clean:uninstall-management"]);
   grunt.registerTask("start-server", ["shell:start-management-server"]);
   

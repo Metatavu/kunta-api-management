@@ -1,3 +1,9 @@
+{{#CREATEUSER}}
 create user if not exists {{ USER }}@{{ HOST }} identified by '{{ PASSWORD }}';
+{{/CREATEUSER}}
+
 create database if not exists {{ DATABASE }} default charset utf8;
+
+{{#CREATEUSER}}
 grant all on {{ DATABASE }}.* to {{ USER }};
+{{/CREATEUSER}}
